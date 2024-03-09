@@ -1,0 +1,27 @@
+ 
+ <div class="container" *ngIf="yearsOfJo.size && olympics$">
+   <!-- Première ligne -->
+    <div class="row justify-content-center">
+        <div class="col-12 d-flex justify-content-center" >
+         <div ><h4 class="border text-white rounded p-2" style="background-color: teal;">Medals per Country</h4>
+        </div> 
+      </div>
+    </div>
+    <!-- Deuxième ligne -->
+    <div class="d-flex justify-content-sm-center">
+      <div class="p-2 bd-highlight  text-center border border-info rounded m-3" >Number of JOs <br /> <b>{{yearsOfJo.size}}</b> </div>
+        <div class="p-2 bd-highlight text-center border border-info rounded m-3" >Number of countries<br />  <b>{{ (olympics$ | async)?.length}}</b></div>
+      </div>
+
+      
+  <ngx-charts-pie-chart class="row justify-content-center"
+    [results]="medal | async"
+    [legend]="false"
+    [labels]="true"
+    [view]=[chartWidth,300]
+    (select)="onSelect($event)"
+  >
+</ngx-charts-pie-chart>
+</div>
+
+
